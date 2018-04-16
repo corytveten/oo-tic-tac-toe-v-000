@@ -46,4 +46,18 @@ class TicTacToe
   def valid_move?(index)
     index.between?(0,8) && !position_taken?(index)
   end
+
+  def turn(board)
+    puts "Please choose a number 1-9:"
+    user_input = gets.chomp
+    index = input_to_index(user_input)
+    if valid_move?(index)
+      player_token = current_player
+      move(index, player_token)
+      display_board
+    else
+      turn(board)
+    end
+  end
+
 end
